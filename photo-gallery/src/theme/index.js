@@ -5,7 +5,21 @@ import links from "./links";
 const gray5 = '#D4DADE';
 const gray6 = '#E9EEF1';
 const theme = {
-  colors,
+  styles: {
+    root: {
+      // uses the theme values provided above
+      fontFamily: 'body',
+      fontWeight: 'body',
+      button: {
+        bg: 'primary',
+      }
+    },
+  },
+  colors: {
+    primary: '#FFCBCB',
+    secondary: '#DFC8B6',
+    danger: '#FE223C'
+  },
   border: {
     searchInput: `1px solid ${gray5}`,
     box: `1px solid ${gray6}`,
@@ -13,12 +27,19 @@ const theme = {
   shadows,
   fonts: {
     body: "Raleway, sans-serif",
-    heading: "Dancing Script, cursive",
+    heading: "Cookie, cursive",
   },
   buttons: {
     default: {
-      fontFamily: "Raleway, sans-serif",
+      fontFamily: "Cookie, cursive",
       cursor: 'pointer',
+      bg: 'primary',
+      color: 'white'
+    },
+    secondary: {
+      cursor: 'pointer',
+      bg: 'secondary',
+      color: 'white'
     }
   },
   fontWeights: {

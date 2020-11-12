@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from "./pages/home";
+import { Home, Login } from "./pages";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from 'theme-ui';
@@ -13,6 +13,7 @@ function App() {
           <Route path="/" exact>
             <Home/>
           </Route>
+          <Route path="/login" exact component={Login} />
         </Switch>
       </Router>
     </ThemeProvider>

@@ -20,6 +20,7 @@ export const primary = 'FFCBCB';//pastel pink
 export const secondary = 'DFC8B6';//nude beige
 
 export const border = grayScale[5];
+export const background = grayScale[1];
 
 const colors = {
   primary,
@@ -27,6 +28,7 @@ const colors = {
   white,
   black,
   border,
+  background
 };
 
 export default colors;

@@ -1,20 +1,20 @@
 const links = {
   nav: {
-    fontFamily: "Quicksand",
+    fontFamily: "Raleway",
     fontWeight: "normal",
     fontSize: "14px",
     lineHeight: "20px",
     cursor: "pointer",
   },
   largeNav: {
-    fontFamily: "Quicksand",
+    fontFamily: "Raleway",
     fontWeight: "medium",
     fontSize: "44px",
     lineHeight: "52px",
     cursor: "pointer",
   },
   noStyle: {
-    fontFamily: "Quicksand",
+    fontFamily: "Raleway",
     textDecoration: "none",
     ":visited": {
       color: "initial",
