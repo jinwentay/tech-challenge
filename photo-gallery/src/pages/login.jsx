@@ -5,7 +5,7 @@ import Button from '../button/button';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { userStore } from '../store';
+import userStore from '../store/userStore';
 
 const Login = observer(() => {
   const history = useHistory();
@@ -16,7 +16,8 @@ const Login = observer(() => {
   }
 
   useEffect(() => {
-    if (userStore.account?.id !== -1) {
+    console.log(account);
+    if (account.id !== -1) {
       history.push('/');
     }
   }, [account, history])

@@ -1,4 +1,4 @@
-import { observable, action, runInAction } from 'mobx';
+import { action, runInAction, observable, decorate } from 'mobx';
 import API from '../api';
 import ls from 'local-storage';
 
@@ -10,18 +10,20 @@ class UserStore {
     }
   }
 
-  @observable 
+  @observable
   account = {
     id: -1,
     username: '',
     name: ''
   }
 
+  @observable
+  isLoggedIn = false;
+
   @action
   login = (data) => {
     API.get(`users`)
     .then((res) => {
-      
       const users = res.data;
       const user = users.find((person) => { console.log(person.username, data.username); return person.username === data.username });
       console.log(user);
@@ -35,6 +37,7 @@ class UserStore {
         ls.set('account', userData);
         runInAction(() => {
           this.account = userData;
+          this.isLoggedIn = true;
         })
       }
     })
@@ -49,6 +52,7 @@ class UserStore {
     };
     this.account = userData;
     ls.set('account', userData);
+    this.isLoggedIn = false;;
   }
 }
 
