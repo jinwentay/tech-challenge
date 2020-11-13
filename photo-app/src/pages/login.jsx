@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Flex, Text } from 'theme-ui';
 import Input from '../input/input';
 import Button from '../button/button';
 import { useForm } from 'react-hook-form';
-import { useHistory, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import userStore from '../store/userStore';
 import styled from '@emotion/styled';
@@ -12,7 +12,6 @@ const SText = styled(Text)`
   background-color: #DFC8B6;
 `
 const Login = observer(() => {
-  const history = useHistory();
   const { account, state } = userStore;
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {

@@ -1,4 +1,3 @@
-import colors from "./colors";
 import shadows from "./shadows";
 import text from "./text";
 import links from "./links";

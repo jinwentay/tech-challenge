@@ -13,11 +13,6 @@ class PhotoStore {
   @observable
   selectedAlbum = null;
 
-  @action
-  setAlbum = (albumId) => {
-    this.selectedAlbum = albumId;
-  }
-
   @observable
   albums = [];
 
@@ -40,14 +35,15 @@ class PhotoStore {
   loadingState = 'SUCCESS';
 
   @action
-  getPhotos = (albumId) => {
+  getPhotos = (album) => {
+    const { id, title } = album;
     this.loadingState = 'LOADING';
-    API.get(`/albums/${albumId}/photos`)
+    API.get(`/albums/${id}/photos`)
     .then((res) => {
       console.log("Photos",res.data);
       if (res.data) {
         runInAction(() => {
-          this.selectedAlbum = albumId;
+          this.selectedAlbum = title;
           this.photos = res.data;
         })
         this.loadingState = 'SUCCESS';

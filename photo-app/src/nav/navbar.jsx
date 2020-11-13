@@ -44,7 +44,7 @@ const Navbar = observer(() => {
     >
         <Grid
           sx={{
-            gridTemplateRows: '250px 1fr',
+            gridTemplateRows: '200px 1fr',
             gap: '0px',
             maxHeight: 'calc(100vh - 72px)',
             minHeight: 'calc(100vh - 72px)',
@@ -55,15 +55,16 @@ const Navbar = observer(() => {
             sx={{
               flexDirection: 'column',
               alignItems: 'center',
+              justifyContent: 'space-around',
               px: 3,
-              py: 2,
+              // py: 2,
               backgroundColor: 'primary',
               borderBottom: '1px solid white'
             }}
           >
             <Text variant="hd.md" bg="primary">Photogallery</Text>
             <Text variant="lb.lg" bg="primary" sx={{ textAlign: 'center' }}>Welcome <br/>{account.name}!</Text>
-            <Text variant="hd.md" bg="primary" mt="auto">Your Albums</Text>
+            <Text variant="hd.md" bg="primary">Your Albums</Text>
           </Flex>
           <Grid sx={{ gridAutoRows: '50px', gap: '0px', overflow: 'scroll', backgroundColor: 'primary', }}>
             {albums.map((album) => (
@@ -73,7 +74,7 @@ const Navbar = observer(() => {
                 sx={{
                   backgroundColor: 'primary'
                 }}
-                onClick={() => getPhotos(album.id)}
+                onClick={() => getPhotos(album)}
               >
                 {album.title.charAt(0).toUpperCase() + album.title.slice(1)}
               </MenuItem>

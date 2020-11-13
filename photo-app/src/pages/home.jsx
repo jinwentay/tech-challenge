@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Spinner, Flex, Grid } from 'theme-ui';
-import { useHistory, Redirect } from 'react-router-dom';
+import { Spinner, Flex, Grid, Text } from 'theme-ui';
+import { Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import Navbar from '../nav/navbar';
 import { photoStore, userStore } from '../store';
 import PhotoCard from '../card/photoCard';
 
 const Home = observer(() => {
-  const { account, isLoggedIn } = userStore;
-  const { photos, albums, selectedAlbum, loadingState } = photoStore;
-  const history = useHistory();
+  const { account } = userStore;
+  const { photos, selectedAlbum, loadingState } = photoStore;
 
   const [width, setWidth] = useState(Math.ceil((window.innerWidth - 282)/4));
   useEffect(() => {
@@ -33,6 +32,7 @@ const Home = observer(() => {
       <Navbar/>
       <Flex
         sx={{
+          flexDirection: 'column',
           position: 'absolute',
           top: 0,
           left: '200px',
@@ -43,7 +43,7 @@ const Home = observer(() => {
           maxHeight: '100vh'
         }}
       >
-        {/* <Text variant="hd.lg" sx={{ textAlign: 'center' }}>Welcome to Photo Gallery!</Text> */}
+        <Text variant="hd.lg" sx={{ color: 'secondary', width: 'calc(100vw - 200px)' }}>{selectedAlbum ? selectedAlbum : 'Select an album to view'}</Text>
         {loadingState === 'LOADING' 
           ? <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}><Spinner/></Flex>
           : <Grid

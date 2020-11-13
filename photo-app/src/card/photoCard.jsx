@@ -21,7 +21,7 @@ const Title = styled(Text)`
 `
 
 const PhotoCard = (props) => {
-  const { title, url, width } = props;
+  const { title, url } = props;
   return (
     <Flex
       key={title}
