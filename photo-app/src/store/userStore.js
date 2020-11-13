@@ -56,7 +56,6 @@ export class UserStore {
     };
     this.account = userData;
     ls.set('account', userData);
-    this.isLoggedIn = false;;
   }
 }
 

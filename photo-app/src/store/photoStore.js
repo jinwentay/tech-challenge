@@ -2,7 +2,7 @@ import { action, runInAction, observable } from 'mobx';
 import API from '../api';
 import ls from 'local-storage';
 
-class PhotoStore {
+export class PhotoStore {
   constructor() {
     const currentUser = ls.get('account');
     if (currentUser) {
