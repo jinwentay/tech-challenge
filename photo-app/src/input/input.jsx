@@ -24,7 +24,7 @@ const InputField = React.forwardRef(
           ...props.sx,
         }}
       >
-        <Label htmlFor={props.id} mb="2">
+        <Label htmlFor={props.id} mb="2" sx={{ backgroundColor: '#DFC8B6' }}>
           {label}
         </Label>
         <Input

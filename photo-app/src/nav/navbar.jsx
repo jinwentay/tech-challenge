@@ -12,11 +12,20 @@ const MenuItem = styled(Text)`
   white-space: nowrap;
   max-width: 218px;
   cursor: pointer;
+  &:hover {
+    color: #DFC8B6;
+    background-color: white;
+  }
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  border-bottom: 1px solid white;
 `
 
 const Navbar = observer(() => {
   const { account, logout } = userStore;
-  const { albums } = photoStore;
+  const { albums, getPhotos } = photoStore;
   return (
     <Flex
       sx={{
@@ -27,7 +36,7 @@ const Navbar = observer(() => {
         boxShadow: 'stroke.bottom',
         maxWidth: '200px',
         height: '100vh',
-        backgroundColor: 'white',
+        backgroundColor: 'primary',
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -47,7 +56,7 @@ const Navbar = observer(() => {
               flexDirection: 'column',
               alignItems: 'center',
               px: 3,
-              pt: 3,
+              py: 2,
               backgroundColor: 'primary',
               borderBottom: '1px solid white'
             }}
@@ -58,24 +67,16 @@ const Navbar = observer(() => {
           </Flex>
           <Grid sx={{ gridAutoRows: '50px', gap: '0px', overflow: 'scroll', backgroundColor: 'primary', }}>
             {albums.map((album) => (
-              <Flex
+              <MenuItem 
                 key={album.id}
+                variant="lb.sm"
                 sx={{
-                  alignItems: 'center',
-                  backgroundColor: 'primary',
-                  p: '3',
-                  borderBottom: '1px solid white'
+                  backgroundColor: 'primary'
                 }}
+                onClick={() => getPhotos(album.id)}
               >
-                <MenuItem 
-                  variant="lb.sm"
-                  sx={{
-                    backgroundColor: 'primary'
-                  }}
-                >
-                  {album.title.charAt(0).toUpperCase() + album.title.slice(1)}
-                </MenuItem>
-              </Flex>
+                {album.title.charAt(0).toUpperCase() + album.title.slice(1)}
+              </MenuItem>
             ))}
           </Grid>
         </Grid>

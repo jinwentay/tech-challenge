@@ -6,7 +6,11 @@ import { useForm } from 'react-hook-form';
 import { useHistory, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import userStore from '../store/userStore';
+import styled from '@emotion/styled';
 
+const SText = styled(Text)`
+  background-color: #DFC8B6;
+`
 const Login = observer(() => {
   const history = useHistory();
   const { account, state } = userStore;
@@ -29,20 +33,21 @@ const Login = observer(() => {
         bg: 'secondary'
       }}
     >
-      <Text variant="hd.xxl" mb="2">Welcome to Photogallery!</Text>
-      <Text variant="hd.md" mb="2" sx={{ textAlign: 'center' }}>Login</Text>
-      <form style={{ fontFamily: 'Raleway' }} onSubmit={handleSubmit(onSubmit)}>
+      <SText variant="hd.xxl" mb="2">Welcome to Photogallery!</SText>
+      <SText variant="hd.md" mb="2" sx={{ textAlign: 'center' }}>Login</SText>
+      <form style={{ fontFamily: 'Raleway', backgroundColor: '#DFC8B6' }} onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="Username"
           type="text"
           name="username"
           ref={register({ required: true })}
+          sx={{ backgroundColor: 'secondary' }}
         />
         {errors.username && errors.username.type === 'required' && (
-          <Text color="danger" variant="pg.xs">Username is required</Text>
+          <SText color="danger" variant="pg.xs">Username is required</SText>
         )}
         {state === 'ERROR' && (
-          <Text color="danger" variant="pg.xs">User not found!</Text>
+          <SText color="danger" variant="pg.xs">User not found!</SText>
         )}
         <Button
           variant="default"
