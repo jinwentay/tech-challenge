@@ -9,18 +9,11 @@ import userStore from '../store/userStore';
 
 const Login = observer(() => {
   const history = useHistory();
-  const { account } = userStore;
+  const { account, state } = userStore;
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     userStore.login(data);
   }
-
-  // useEffect(() => {
-  //   console.log(account);
-  //   if (account.id !== -1) {
-  //     history.push('/');
-  //   }
-  // }, [account, history])
 
   if (account.id !== -1) {
     return <Redirect to="/"/>;
@@ -44,18 +37,22 @@ const Login = observer(() => {
           type="text"
           name="username"
           ref={register({ required: true })}
-          error={errors.username}
         />
         {errors.username && errors.username.type === 'required' && (
           <Text color="danger" variant="pg.xs">Username is required</Text>
+        )}
+        {state === 'ERROR' && (
+          <Text color="danger" variant="pg.xs">User not found!</Text>
         )}
         <Button
           variant="default"
           sx={{
             mt: 2,
             width: '100%',
-            bg: 'primary'
+            bg: 'primary',
           }}
+          size="sm"
+          disabled={state === 'LOADING'}
           onClick={handleSubmit(onSubmit)}
         >
           Login

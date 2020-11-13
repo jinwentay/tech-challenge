@@ -20,7 +20,7 @@ const InputField = React.forwardRef(
       <Box
         {...props}
         sx={{
-          mb: error ? 1 : 3,
+          mb: 1,
           ...props.sx,
         }}
       >

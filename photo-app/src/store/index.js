@@ -1,7 +1,7 @@
 import userStore from './userStore';
-// import photoStore from './photoStore';
+import photoStore from './photoStore';
 
 export {
   userStore,
-  // photoStore
+  photoStore
 };

@@ -1,5 +1,9 @@
 import React from 'react';
 import { Button, Spinner } from 'theme-ui';
+const size = {
+  'sm': '20px',
+  'md': '30px'
+};
 
 const SButton = React.forwardRef(
   (
@@ -22,6 +26,7 @@ const SButton = React.forwardRef(
           width: fullWidth ? '100%' : 'initial',
           borderRadius: '4px',
           ...sx,
+          fontSize: props.size ? size[props.size] : size['sm']
         }}
       >
         {loading ? <Spinner color="background" size="16" /> : children}

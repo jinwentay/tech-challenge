@@ -37,6 +37,7 @@ const theme = {
       color: 'white'
     },
     secondary: {
+      fontFamily: "Cookie, cursive",
       cursor: 'pointer',
       bg: 'secondary',
       color: 'white'

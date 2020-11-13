@@ -18,10 +18,11 @@ class UserStore {
   }
 
   @observable
-  isLoggedIn = false;
+  state = 'SUCCESS';
 
   @action
   login = (data) => {
+    this.state = 'LOADING';
     API.get(`users`)
     .then((res) => {
       const users = res.data;
@@ -37,8 +38,10 @@ class UserStore {
         ls.set('account', userData);
         runInAction(() => {
           this.account = userData;
-          this.isLoggedIn = true;
+          this.state = 'SUCCESS';
         })
+      } else {
+        this.state = 'ERROR';
       }
     })
   }
