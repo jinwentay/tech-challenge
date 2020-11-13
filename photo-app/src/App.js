@@ -1,14 +1,18 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import { Home, Login } from "./pages";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 import { ThemeProvider } from 'theme-ui';
 import theme from './theme';
 
-function App() {
+const history = createBrowserHistory();
+
+const App = observer(() => {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route path="/" exact>
             <Home/>
@@ -18,6 +22,6 @@ function App() {
       </Router>
     </ThemeProvider>
   );
-}
+})
 
 export default App;

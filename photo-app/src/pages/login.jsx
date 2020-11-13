@@ -3,7 +3,7 @@ import { Flex, Text } from 'theme-ui';
 import Input from '../input/input';
 import Button from '../button/button';
 import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import userStore from '../store/userStore';
 
@@ -15,12 +15,16 @@ const Login = observer(() => {
     userStore.login(data);
   }
 
-  useEffect(() => {
-    console.log(account);
-    if (account.id !== -1) {
-      history.push('/');
-    }
-  }, [account, history])
+  // useEffect(() => {
+  //   console.log(account);
+  //   if (account.id !== -1) {
+  //     history.push('/');
+  //   }
+  // }, [account, history])
+
+  if (account.id !== -1) {
+    return <Redirect to="/"/>;
+  }
   return (
     <Flex
       sx={{

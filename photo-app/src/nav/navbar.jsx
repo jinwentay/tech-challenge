@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Box, Flex, Text } from 'theme-ui';
 import { observer } from 'mobx-react';
 import { userStore } from '../store';
@@ -30,7 +30,7 @@ const Navbar = observer(() => {
         }}
       >
         <Text variant="hd.md">Photogallery</Text>
-        <Button variant="secondary" onClick={logout}>Logout</Button>
+        <Link to="/login"><Button variant="secondary" onClick={logout}>Logout</Button></Link>
       </Flex>
     </Box>
   )

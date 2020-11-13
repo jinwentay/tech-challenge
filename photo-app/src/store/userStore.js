@@ -1,4 +1,4 @@
-import { action, runInAction, observable, decorate } from 'mobx';
+import { action, runInAction, observable } from 'mobx';
 import API from '../api';
 import ls from 'local-storage';
 
@@ -45,6 +45,7 @@ class UserStore {
 
   @action
   logout = () => {
+    console.log("LOGGING OUT");
     const userData = {
       id: -1,
       username: '',
